@@ -162,6 +162,19 @@ const Main = () => {
             span: 4,
           }}
           size={"large"}
+          initialValues={{
+            jobTable: tableType,
+            weapon,
+            stat,
+            pay,
+            oneKill,
+            hunt,
+            boss,
+            core,
+            difficulty,
+            utili,
+            damageTime,
+          }}
         >
           <Form.Item label="테이블 타입" name="jobTable">
             <Radio.Group value={tableType}>
