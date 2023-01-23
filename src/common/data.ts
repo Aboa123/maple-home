@@ -378,7 +378,7 @@ const data = [
     difficulty: 2,
     pay: "high",
     oneKill: "middle",
-    hunt: 4,
+    hunt: 5,
     boss: 4,
     utili: 4,
     damageTime: 120,
