@@ -3,7 +3,7 @@ import { StarFilled } from "@ant-design/icons/lib/icons";
 import { Button, Form, Radio, Space } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
 import { useState } from "react";
-import data, { species } from "../../common/data";
+import data, { jobGroup, species } from "../../common/data";
 import CharaterBox from "../../components/charaterBox";
 import JobItem from "../../components/JobItem";
 
@@ -45,6 +45,7 @@ const Main = () => {
     e.hunt && setHunt(e.hunt);
     setStat(e.stat);
     setDamageTime(e.damageTime);
+    setOneKill(e.oneKill);
   };
 
   return (
@@ -242,34 +243,40 @@ const Main = () => {
         </Form>
       </Content>
       <Content style={{ flex: 1 }}>
-        {Object.values(species).map((item, index) => (
-          <JobItem
-            key={item}
-            title={item}
-            contents={
-              <Content
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  flexWrap: "wrap",
-                  justifyContent: "flex-start",
-                  gap: 8,
-                }}
-              >
-                {data
-                  .filter((innerItem) => innerItem.species === item)
-                  .map((i) => (
-                    <CharaterBox
-                      key={i.name}
-                      image={i.image}
-                      name={i.name}
-                      onPress={onPress}
-                    />
-                  ))}
-              </Content>
-            }
-          />
-        ))}
+        {Object.values(tableType === "group" ? jobGroup : species).map(
+          (item, index) => (
+            <JobItem
+              key={item}
+              title={item}
+              contents={
+                <Content
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    flexWrap: "wrap",
+                    justifyContent: "flex-start",
+                    gap: 8,
+                  }}
+                >
+                  {data
+                    .filter((innerItem) =>
+                      tableType === "group"
+                        ? innerItem.jobGroup === item
+                        : innerItem.species === item
+                    )
+                    .map((i) => (
+                      <CharaterBox
+                        key={i.name}
+                        image={i.image}
+                        name={i.name}
+                        onPress={onPress}
+                      />
+                    ))}
+                </Content>
+              }
+            />
+          )
+        )}
       </Content>
     </Space>
   );
