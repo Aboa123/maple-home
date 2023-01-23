@@ -513,10 +513,10 @@ const Main = () => {
             <Col flex={"auto"}>
               <span style={{ fontSize: 25 }}>
                 {data[selectedIndex].oneKill === "high"
-                  ? "고자본"
+                  ? "높음"
                   : data[selectedIndex].oneKill === "middle"
-                  ? "중자본"
-                  : "저자본"}
+                  ? "중간"
+                  : "낮음"}
               </span>
             </Col>
           </Row>
