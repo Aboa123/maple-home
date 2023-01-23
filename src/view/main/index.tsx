@@ -2,7 +2,7 @@ import { StarOutlined } from "@ant-design/icons";
 import { StarFilled } from "@ant-design/icons/lib/icons";
 import { Button, Form, Radio, Space } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import data, { jobGroup, species, weaponType } from "../../common/data";
 import CharaterBox from "../../components/charaterBox";
 import JobItem from "../../components/JobItem";
@@ -10,6 +10,8 @@ import JobItem from "../../components/JobItem";
 const Main = () => {
   const [form] = Form.useForm();
   const [charaters, setCharaters] = useState(data);
+
+  const formRef = useRef<any>(undefined);
 
   const [tableType, setTableType] = useState<"group" | "job" | undefined>(
     "group"
@@ -34,6 +36,31 @@ const Main = () => {
   >("all");
 
   const onPress = () => {};
+
+  const onReset = () => {
+    formRef.current.setFieldsValue({
+      weapon: "all",
+      stat: "all",
+      pay: "all",
+      oneKill: "all",
+      hunt: "all",
+      boss: "all",
+      core: "all",
+      difficulty: "all",
+      utili: "all",
+      damageTime: "all",
+    });
+    setWeapon("all");
+    setStat("all");
+    setPay("all");
+    setOneKill("all");
+    setHunt("all");
+    setBoss("all");
+    setCore("all");
+    setDifficulty("all");
+    setUtili("all");
+    setDamageTime("all");
+  };
 
   const onFormLayoutChange = (e: any) => {
     e.jobTable && setTableType(e.jobTable);
@@ -157,6 +184,7 @@ const Main = () => {
       </Header>
       <Content>
         <Form
+          ref={formRef}
           onValuesChange={onFormLayoutChange}
           labelCol={{
             span: 4,
@@ -176,6 +204,11 @@ const Main = () => {
             damageTime,
           }}
         >
+          <Form.Item wrapperCol={{ offset: 4 }}>
+            <Button danger onClick={onReset}>
+              초기화
+            </Button>
+          </Form.Item>
           <Form.Item label="테이블 타입" name="jobTable">
             <Radio.Group value={tableType}>
               <Radio.Button value="group">그룹별</Radio.Button>
