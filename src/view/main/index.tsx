@@ -142,7 +142,7 @@ const Main = () => {
         ))
     );
   };
-  console.log(boss !== "all", boss);
+
   return (
     <Space
       style={{
@@ -212,7 +212,7 @@ const Main = () => {
                     setHunt(
                       hunt !== "all" && hunt === i + 1
                         ? "all"
-                        : (String(i + 1) as any)
+                        : ((i + 1) as any)
                     )
                   }
                 >
@@ -237,7 +237,7 @@ const Main = () => {
                     setBoss(
                       boss !== "all" && boss === i + 1
                         ? "all"
-                        : (String(i + 1) as any)
+                        : ((i + 1) as any)
                     )
                   }
                 >
@@ -262,7 +262,7 @@ const Main = () => {
                     setCore(
                       core !== "all" && core === i + 1
                         ? "all"
-                        : (String(i + 1) as any)
+                        : ((i + 1) as any)
                     )
                   }
                 >
@@ -287,7 +287,7 @@ const Main = () => {
                     setDifficulty(
                       difficulty !== "all" && difficulty === i + 1
                         ? "all"
-                        : (String(i + 1) as any)
+                        : ((i + 1) as any)
                     )
                   }
                 >
@@ -312,7 +312,7 @@ const Main = () => {
                     setUtili(
                       utili !== "all" && utili === i + 1
                         ? "all"
-                        : (String(i + 1) as any)
+                        : ((i + 1) as any)
                     )
                   }
                 >
