@@ -1,0 +1,17 @@
+@font-face {
+  font-family : 'MBold';
+  src : url(/public/font/Maplestory\ Bold.ttf)
+}
+@font-face {
+  font-family : 'MLight';
+  src : url(/public/font/Maplestory\ Light.ttf)
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: MLight;
+}
