@@ -621,7 +621,9 @@ const Main = () => {
             </Col>
             <Col flex={"auto"}>
               <span style={{ fontSize: 25 }}>
-                {data[selectedIndex].damageTime}
+                {data[selectedIndex].damageTime === "none"
+                  ? "복합적"
+                  : `${data[selectedIndex].damageTime}초`}
               </span>
             </Col>
           </Row>
