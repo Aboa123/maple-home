@@ -182,7 +182,7 @@ const Main = () => {
               <Radio.Button value="힘">힘 (STR)</Radio.Button>
               <Radio.Button value="지능">지능 (INT)</Radio.Button>
               <Radio.Button value="민첩">민첩 (DEX)</Radio.Button>
-              <Radio.Button value="운">운 (LUK)</Radio.Button>
+              <Radio.Button value="행운">행운 (LUK)</Radio.Button>
               <Radio.Button value="체력">체력 (HP)</Radio.Button>
             </Radio.Group>
           </Form.Item>
