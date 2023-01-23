@@ -15,6 +15,7 @@ const CharaterBox = (props: CharaterBoxProps) => {
         border: "2px solid black",
         boxSizing: "border-box",
         position: "relative",
+        cursor: "pointer",
         overflow: "hidden",
         backgroundColor: "#30353f",
       }}

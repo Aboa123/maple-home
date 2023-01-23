@@ -1,6 +1,6 @@
 import { StarOutlined } from "@ant-design/icons";
 import { StarFilled } from "@ant-design/icons/lib/icons";
-import { Button, Form, Radio, Space } from "antd";
+import { Button, Col, Form, Modal, Radio, Row, Space } from "antd";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import { useRef, useState } from "react";
 import data, { jobGroup, species, weaponType } from "../../common/data";
@@ -35,7 +35,14 @@ const Main = () => {
     120 | 180 | 200 | "none" | "all"
   >("all");
 
-  const onPress = () => {};
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const onPress = (name: string) => {
+    const index = data.findIndex((item) => item.name === name);
+    setSelectedIndex(index === -1 ? 0 : index);
+    setModalVisible(true);
+  };
 
   const onReset = () => {
     formRef.current.setFieldsValue({
@@ -164,7 +171,7 @@ const Main = () => {
             key={i.name}
             image={i.image}
             name={i.name}
-            onPress={onPress}
+            onPress={() => onPress(i.name)}
           />
         ))
     );
@@ -428,6 +435,198 @@ const Main = () => {
         <p>유튜브 참고하면서 만들었음</p>
         <p>데이터 수정, 기능추가요청, 오류제보는 디스코드로 부탁드림</p>
       </Footer>
+      <Modal
+        open={modalVisible}
+        onCancel={() => setModalVisible(false)}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+        centered
+        title={<span style={{ fontSize: 25 }}>{data[selectedIndex].name}</span>}
+        width={800}
+        bodyStyle={{ padding: 0 }}
+        style={{ padding: 0 }}
+      >
+        <Content
+          style={{
+            gap: 8,
+            display: "flex",
+            flexDirection: "column",
+            overflow: "hidden",
+          }}
+        >
+          <Row>
+            <Col flex={"150px"}>
+              <span style={{ fontSize: 25 }}>직업군</span>
+            </Col>
+            <Col flex={"auto"}>
+              <span style={{ fontSize: 25 }}>
+                {data[selectedIndex].jobGroup}
+              </span>
+            </Col>
+          </Row>
+          <Row>
+            <Col flex={"150px"}>
+              <span style={{ fontSize: 25 }}>분류</span>
+            </Col>
+            <Col flex={"auto"}>
+              <span style={{ fontSize: 25 }}>
+                {data[selectedIndex].species}
+              </span>
+            </Col>
+          </Row>
+          <Row>
+            <Col flex={"150px"}>
+              <span style={{ fontSize: 25 }}>무기</span>
+            </Col>
+            <Col flex={"auto"}>
+              <span style={{ fontSize: 25 }}>
+                {data[selectedIndex].weapon.join(", ")}
+              </span>
+            </Col>
+          </Row>
+          <Row>
+            <Col flex={"150px"}>
+              <span style={{ fontSize: 25 }}>주스탯</span>
+            </Col>
+            <Col flex={"auto"}>
+              <span style={{ fontSize: 25 }}>{data[selectedIndex].stat}</span>
+            </Col>
+          </Row>
+          <Row>
+            <Col flex={"150px"}>
+              <span style={{ fontSize: 25 }}>추천자본</span>
+            </Col>
+            <Col flex={"auto"}>
+              <span style={{ fontSize: 25 }}>
+                {data[selectedIndex].pay === "high"
+                  ? "고자본"
+                  : data[selectedIndex].pay === "middle"
+                  ? "중자본"
+                  : "저자본"}
+              </span>
+            </Col>
+          </Row>
+          <Row>
+            <Col flex={"150px"}>
+              <span style={{ fontSize: 25 }}>사냥원킬컷</span>
+            </Col>
+            <Col flex={"auto"}>
+              <span style={{ fontSize: 25 }}>
+                {data[selectedIndex].oneKill === "high"
+                  ? "고자본"
+                  : data[selectedIndex].oneKill === "middle"
+                  ? "중자본"
+                  : "저자본"}
+              </span>
+            </Col>
+          </Row>
+          <Row>
+            <Col flex={"150px"}>
+              <span style={{ fontSize: 25 }}>사냥등급</span>
+            </Col>
+            <Col flex={"auto"}>
+              <span style={{ fontSize: 25 }}>
+                {[...Array(5)].map((_, i) =>
+                  Number(data[selectedIndex].hunt) < i + 1 ? (
+                    <StarOutlined style={{ fontSize: 25 }} key={i} />
+                  ) : (
+                    <StarFilled
+                      style={{ color: "yellowgreen", fontSize: 25 }}
+                      key={i}
+                    />
+                  )
+                )}
+              </span>
+            </Col>
+          </Row>
+          <Row>
+            <Col flex={"150px"}>
+              <span style={{ fontSize: 25 }}>보스등급</span>
+            </Col>
+            <Col flex={"auto"}>
+              <span style={{ fontSize: 25 }}>
+                {[...Array(5)].map((_, i) =>
+                  Number(data[selectedIndex].boss) < i + 1 ? (
+                    <StarOutlined style={{ fontSize: 25 }} key={i} />
+                  ) : (
+                    <StarFilled
+                      style={{ color: "yellowgreen", fontSize: 25 }}
+                      key={i}
+                    />
+                  )
+                )}
+              </span>
+            </Col>
+          </Row>
+          <Row>
+            <Col flex={"150px"}>
+              <span style={{ fontSize: 25 }}>코강 난이도</span>
+            </Col>
+            <Col flex={"auto"}>
+              <span style={{ fontSize: 25 }}>
+                {[...Array(5)].map((_, i) =>
+                  Number(data[selectedIndex].core) < i + 1 ? (
+                    <StarOutlined style={{ fontSize: 25 }} key={i} />
+                  ) : (
+                    <StarFilled
+                      style={{ color: "yellowgreen", fontSize: 25 }}
+                      key={i}
+                    />
+                  )
+                )}
+              </span>
+            </Col>
+          </Row>
+          <Row>
+            <Col flex={"150px"}>
+              <span style={{ fontSize: 25 }}>조작 난이도</span>
+            </Col>
+            <Col flex={"auto"}>
+              <span style={{ fontSize: 25 }}>
+                {[...Array(5)].map((_, i) =>
+                  Number(data[selectedIndex].difficulty) < i + 1 ? (
+                    <StarOutlined style={{ fontSize: 25 }} key={i} />
+                  ) : (
+                    <StarFilled
+                      style={{ color: "yellowgreen", fontSize: 25 }}
+                      key={i}
+                    />
+                  )
+                )}
+              </span>
+            </Col>
+          </Row>
+          <Row>
+            <Col flex={"150px"}>
+              <span style={{ fontSize: 25 }}>유틸리티</span>
+            </Col>
+            <Col flex={"auto"}>
+              <span style={{ fontSize: 25 }}>
+                {[...Array(5)].map((_, i) =>
+                  Number(data[selectedIndex].utili) < i + 1 ? (
+                    <StarOutlined style={{ fontSize: 25 }} key={i} />
+                  ) : (
+                    <StarFilled
+                      style={{ color: "yellowgreen", fontSize: 25 }}
+                      key={i}
+                    />
+                  )
+                )}
+              </span>
+            </Col>
+          </Row>
+          <Row>
+            <Col flex={"150px"}>
+              <span style={{ fontSize: 25 }}>극딜주기</span>
+            </Col>
+            <Col flex={"auto"}>
+              <span style={{ fontSize: 25 }}>
+                {data[selectedIndex].damageTime}
+              </span>
+            </Col>
+          </Row>
+        </Content>
+      </Modal>
     </Space>
   );
 };
