@@ -181,7 +181,6 @@ const Main = () => {
       <Header
         style={{
           fontSize: 50,
-          width: "100%",
           textAlign: "center",
           padding: 16,
         }}
