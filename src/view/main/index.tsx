@@ -1,7 +1,7 @@
 import { StarOutlined } from "@ant-design/icons";
 import { StarFilled } from "@ant-design/icons/lib/icons";
 import { Button, Form, Radio, Space } from "antd";
-import { Content, Header } from "antd/es/layout/layout";
+import { Content, Footer, Header } from "antd/es/layout/layout";
 import { useRef, useState } from "react";
 import data, { jobGroup, species, weaponType } from "../../common/data";
 import CharaterBox from "../../components/charaterBox";
@@ -173,16 +173,22 @@ const Main = () => {
   return (
     <Space
       style={{
-        padding: 16,
         flexGrow: 1,
         backgroundColor: "",
       }}
       direction="vertical"
     >
-      <Header style={{ fontSize: 50, width: "100%", textAlign: "center" }}>
+      <Header
+        style={{
+          fontSize: 50,
+          width: "100%",
+          textAlign: "center",
+          padding: 16,
+        }}
+      >
         메이플스토리 나의 직업 찾기
       </Header>
-      <Content>
+      <Content style={{ padding: 16 }}>
         <Form
           ref={formRef}
           onValuesChange={onFormLayoutChange}
@@ -407,6 +413,14 @@ const Main = () => {
           )
         )}
       </Content>
+      <Footer
+        style={{ height: 180, paddingTop: 16, backgroundColor: "#ECECDF" }}
+      >
+        <p>Discord Aboa#9076</p>
+        <p>오로라 짱손카이저</p>
+        <p>유튜브 참고하면서 만들었음</p>
+        <p>데이터 수정, 기능추가요청, 오류제보는 디스코드로 부탁드림</p>
+      </Footer>
     </Space>
   );
 };
