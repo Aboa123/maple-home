@@ -180,12 +180,15 @@ const Main = () => {
     >
       <Header
         style={{
-          fontSize: 50,
-          textAlign: "center",
+          display: "flex",
+          justifyContent: "center",
+          fontSize: 30,
           padding: 16,
+          backgroundColor: "#30353f",
+          color: "#FFF",
         }}
       >
-        메이플스토리 나의 직업 찾기
+        <div style={{ minWidth: 1400 }}>메홈</div>
       </Header>
       <Content style={{ padding: 16 }}>
         <Form
@@ -413,9 +416,14 @@ const Main = () => {
         )}
       </Content>
       <Footer
-        style={{ height: 180, paddingTop: 16, backgroundColor: "#ECECDF" }}
+        style={{
+          height: 180,
+          padding: 12,
+          backgroundColor: "#30353f",
+          color: "#FFF",
+        }}
       >
-        <p>Discord Aboa#9076</p>
+        <p>디스코드: Aboa#9076</p>
         <p>오로라 짱손카이저</p>
         <p>유튜브 참고하면서 만들었음</p>
         <p>데이터 수정, 기능추가요청, 오류제보는 디스코드로 부탁드림</p>
