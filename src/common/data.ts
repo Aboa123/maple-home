@@ -330,8 +330,8 @@ const data = [
     pay: "high",
     oneKill: "high",
     hunt: 2,
-    boss: 4,
-    utili: 4,
+    boss: 5,
+    utili: 5,
     damageTime: 180,
   },
   {
