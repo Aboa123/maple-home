@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/maple-home/static/css/main.a28f490a.css",
-    "main.js": "/maple-home/static/js/main.9946fac7.js",
+    "main.js": "/maple-home/static/js/main.981d8340.js",
     "static/js/787.8687770e.chunk.js": "/maple-home/static/js/787.8687770e.chunk.js",
     "static/media/Maplestory Bold.ttf": "/maple-home/static/media/Maplestory Bold.e39287220e971b277c0e.ttf",
     "static/media/Maplestory Light.ttf": "/maple-home/static/media/Maplestory Light.9d9497585053c96c8082.ttf",
@@ -53,11 +53,11 @@
     "static/media/kain.png": "/maple-home/static/media/kain.87f454a1843987d0e4c3.png",
     "index.html": "/maple-home/index.html",
     "main.a28f490a.css.map": "/maple-home/static/css/main.a28f490a.css.map",
-    "main.9946fac7.js.map": "/maple-home/static/js/main.9946fac7.js.map",
+    "main.981d8340.js.map": "/maple-home/static/js/main.981d8340.js.map",
     "787.8687770e.chunk.js.map": "/maple-home/static/js/787.8687770e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a28f490a.css",
-    "static/js/main.9946fac7.js"
+    "static/js/main.981d8340.js"
   ]
 }
